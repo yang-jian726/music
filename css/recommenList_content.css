@@ -1,0 +1,27 @@
+.wrapper{width: 100%;height: 100%;}
+.page{position: absolute;top: 0;width: 100%;height: 95%;background-color: #f6f6f6;overflow: scroll;overflow-x: hidden;}
+.title-label{position: absolute;left: 0;top: 0;right: 0;width: 100%;height: 168px;}
+.title{position: absolute;top: 0;background-color: black;width: 100%;height: 134px;}
+.title-content{height: 24px;width: 80%;line-height: 24px;margin: 24px 10%;font-size: 18px;font-family: "Microsoft YaHei UI";color: #fefefe;overflow: hidden;text-overflow: ellipsis;}
+.song-menu{color: white;font-size: 12px;position: absolute;top: 10%;left: 16px;}
+.listen{color: white;position: absolute;top: 10%;font-size: 12px;}
+.subtitle-content{font-size: 16px;color: white;position: absolute;top: 24%;left: 24px}
+.avatar-link{font-size: 12px;color: #999999;position: absolute;top: 56%;left: 48px}
+.label{position: absolute;top: 134px;width: 100%;height: 32px;line-height: 32px;padding-left: 5%;}
+.label1{color: #666666;font-size: 14px;}
+.label2{color: #666666;font-size: 14px;border: 1px solid #ebecec;border-radius: 16px;width: auto;height: 16px;line-height: 16px;text-align: center;padding: 2px 8px}
+.page-bottom{position: fixed;bottom: 0;left: 0;right: 0;width: 100%;height: 5%;text-align: center;border-top: 1px #d43b32 solid;}
+.intro{position: relative;top: 172px;padding-left: 5%;padding-right: 5%;color: #666666;font-size: 14px;}
+.intro-content{}
+.list-title{position: relative;top: 184px;height: 24px;width: 100%;padding-left: 2%;background-color: #ebecec;color: #666666;font-size: 12px;line-height: 24px}
+.list-content{position: relative;top: 192px;width: 100%;height: 1680px;}
+.list-song-ranking{height: 1680px;width: 15%;text-align: center;}
+.list-song-num{height: 56px;line-height: 56px;font-size: 16px;color: #999999;}
+.list-song{height: 1680px;width: 70%;padding-left: 16px;}
+.list-song-name-intro{height: 56px;width: 100%}
+.list-song-name{height: 32px;line-height: 32px;font-size: 16px;color: #333333}
+.list-song-intro{height: 24px;font-size: 12px;color: #999999}
+.player{height: 56px;width: 15%;line-height: 56px;text-align: center;}
+svg{width: 20px;height: 20px;margin-top: 2px;float: left;margin-left: 120px}
+.page-bottom-content{height: 24px;width: 316px;background-color: #d43b32;border-color: #d43b32;border-radius: 36px;margin:4px auto 0;}
+.collected{font-size: 14px;color: #fff;float: left;line-height: 24px}

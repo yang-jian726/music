@@ -1,0 +1,14 @@
+.hot-song-list{width: 100%;height: 156px;background: url("../assets/images/hot_music_bg.jpg") no-repeat;background-size: 100% 100%}
+.hot-music-index-icon{width: 142px;height: 67px;margin: 24px 30px}
+.hot-music-update-time{margin: 0 30px;color: hsla(0,0%,100%,.8);font-size: 12px;}
+.hot-song-content{height: 1800px;}
+.hot-song-ranking{width: 15%;text-align: center;height: 1800px;}
+.hot-song-num1{height: 60px;line-height: 60px;font-size: 16px;color: #df3436;float: left;width: 100%}
+.hot-song-num2{height: 60px;line-height: 60px;font-size: 16px;color: #999999;width: 100%;float: left;position: relative;top: 120px;}
+.hot-song{width: 70%;height: 1800px;}
+.hot-song-name-intro{width: 100vh;}
+.hot-song-name{font-size: 16px;height: 32px;color: #333333;width: 100%;}
+.hot-song-intro{font-size: 12px;height: 28px;margin-left: 12px;color: #999999;width: 100%;margin-top: -4px}
+.hot-song-player{height: 1800px;line-height: 60px;}
+p{clear: left;color: #999;height: 56px;font-size: 16px;line-height: 56px;text-align: center}
+/**{outline: 1px red solid}*/

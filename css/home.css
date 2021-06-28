@@ -1,0 +1,83 @@
+*{
+    margin: 0;
+    padding: 0;
+    /*outline: red 1px solid;*/
+}
+li{
+    list-style: none;
+    display: inline-block;
+}
+.page-top{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+}
+.page-top-title{
+    background: #d43c33;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 17px 10px;
+}
+.page-top-title .logo-left > svg{
+    width: 142px;
+    height: 25px;
+}
+.download-app-right a{
+    text-decoration: none;
+    position: relative;
+    display: inline-block;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    text-align: center;
+    font-size: 16px;
+    color: #d43c33;
+    background-color: #fff;
+    border-radius: 37.5%/100%;
+}
+.page-content {
+    position: absolute;
+    top: 72px;
+    width: 100%;
+}
+.catalog{
+    position: fixed;
+    top: 72px;
+    width: 100%;
+    margin: 12px auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 15px;
+    font-family: "Microsoft Yi Baiti";
+}
+.catalog span {
+    width: 30.33%;
+    text-align: center;
+}
+.catalog span.active {
+    background-color: white;
+    color: #dd001b;
+    border-bottom: 2px #dd001b solid;
+}
+.content-pannel{}
+.content-pannel ul {
+    /*background-color: yellowgreen;*/
+    display: none;
+}
+.content-pannel ul.active {
+    display: block;
+    position: fixed;
+    top: 124px;
+    width: 100%;
+    height: 80%;
+    overflow: scroll;
+    overflow-x: hidden;
+}
