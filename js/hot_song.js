@@ -1,6 +1,6 @@
 // console.log('hotsong')
 $(function () {
-    $.get('./music/database.json').then(function (response) {
+    $.get('../database.json').then(function (response) {
         response.forEach((i)=>{
             // console.log('iiii::: ',i)
             // let $li1 = hotSongsTemplate(i)
