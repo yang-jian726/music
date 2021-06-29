@@ -22,7 +22,7 @@ function recommendTemplate(reSong) {
                          <div class="cover">
                              <img src="../assets/images/wenrou.jpg" alt="推荐歌曲1" class="cover-img"/>
                          </div>
-                         <div class="recommendList-content-title">${reSong.title}</div>
+                         <h3 class="recommendList-content-title">${reSong.title}</h3>
                     </a>
                 </li>`)
 }
