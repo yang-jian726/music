@@ -1,43 +1,77 @@
 $(function(){
     var id = parseInt(location.search.match(/\bid=([^&]*)/)[1],10)
     $.get('../database.json').then(function (response) {
-        var songs = response;
-        var song = songs.filter(s=>s.id === id)[0];
-        var {url,name,singer,lyric,pagebg,cover} = song;
+        let songs = response
+        let song = songs.filter(s=>s.id === id)[0]
+        let {url,name,singer,lyric,pagebg,cover} = song
 
-        //来源、背景、歌曲详细信息
-        play(url);
-        Img(pagebg,cover);
-        SongInfo(name,singer,lyric);
-
-    });
+        play(url)
+        initImg(pagebg,cover)
+        initSongInfo(name,singer,lyric)
+    },function (error) {
+        alert(error)
+    })
 
     function play(url){
-        var audio = document.createElement('audio');
-        audio.src= url;
+        var audio = document.createElement('audio')
+        audio.src= url
         document.body.appendChild(audio)
-        $('.icon-play').on('click',function(){audio.play(); add()});
-        $('.icon-pause').on('click',function(){audio.pause(); remove()});
-        audio.onended =function(){remove()}
+        $('.icon-play').on('click',function(){
+            audio.play()
+            add()
+        })
+        $('.icon-pause').on('click',function(){
+            audio.pause()
+            remove()
+        })
+        audio.onended =function(){
+            remove()
+        }
+        setInterval(()=>{
+            let seconds = audio.currentTime
+            let munites = ~~(seconds / 60)
+            let left = seconds - munites * 60
+            let time = `${full(munites)}:${full(left)}`
+            let $lines = $('.lines > p')
+            let $highlight
+            for(let i=0;i<$lines.length;i++){
+                let currentLineTime = $lines.eq(i).attr('data-time')
+                let nextLineTime = $lines.eq(i+1).attr('data-time')
+                if($lines.eq(i+1).length !== 0 && currentLineTime < time && nextLineTime > time){
+                    $highlight = $lines.eq(i)
+                    break
+                }
+            }
+            if($highlight){
+                $highlight.addClass('active').prev().removeClass('active')
+                let top = $highlight.offset().top
+                let linesTop = $('.lines').offset().top
+                let delta = top - linesTop - $('.lyric').height() /3
+                $('.lines').css('transform',`translateY(-${delta}px)`)
+            }
+            //console.log($highlight)
+        },300)
+        function full(time) {
+            return time>=10 ? time + '' : '0' + time
+        }
     }
-    function SongInfo(name,singer,lyric){
-        //name、singer、lyric
-        $('.song-description h1 .songName').text(name);
-        $('.song-description h1 .author').text(singer);
+    function initSongInfo(name,singer,lyric){
+        $('.song-description h1 .songName').text(name)
+        $('.song-description h1 .author').text(singer)
         parseLyric.call(undefined,lyric)
     }
-    function Img(pagebg,cover) {
+    function initImg(pagebg,cover) {
         $('.page').css('background-image',`url(${pagebg})`)
         $('.disc > .cover').removeAttr('src')
         $('.disc > .cover').attr('src',`${cover}`)
     }
     function parseLyric(lyric) {
-        let array = lyric.split('\n');
-        let a = /^\[(.+)\](.*)$/;
+        let array = lyric.split('\n')
+        let regex = /^\[(.+)\](.*)$/
         array = array.map(function (string,index) {
-            let match = string.match(a);
-            if(match){
-                return{time:match[1],words:match[2]}
+            let matche = string.match(regex)
+            if(matche){
+                return {time:matche[1],words:matche[2]}
             }
         })
         let $lines = $('.lines')
@@ -51,33 +85,12 @@ $(function(){
 })
 
 function remove() {
-    $('.disc .light').removeClass('playing');
-    $('.disc .cover').removeClass('playing');
-    $('.icon-wrapper').removeClass('playing')
+    $('.disc .light').removeClass('playing')
+    $('.disc .cover').removeClass('playing')
+    $('.icon-wrap').removeClass('playing')
 }
 function add() {
-    $('.disc .light').addClass('playing');
-    $('.disc .cover').addClass('playing');
-    $('.icon-wrapper').addClass('playing')
+    $('.disc .light').addClass('playing')
+    $('.disc .cover').addClass('playing')
+    $('.icon-wrap').addClass('playing')
 }
-
-
-var xhr = new XMLHttpRequest();
-xhr.responseType = 'arraybuffer';
-xhr.onload = function () {
-    if (xhr.readyState === 4 && xhr.status===200){
-        var aCtx = new AudioContext();
-        aCtx.decodeAudioData(xhr.response,function (rr) {
-            var sNode = aCtx.createBufferSource();
-            sNode.buffer = rr;
-            sNode.connect(aCtx.destination);
-            sNode.start(0);
-        })
-
-    }else {
-        console.log("错误")
-    }
-};
-xhr.open("POST","../assets/music/dy.m4a",true);
-xhr.send();
-
